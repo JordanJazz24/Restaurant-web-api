@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <span>El Restaurante</span>
+        <img src="/images/logo.png" alt="Logo del Restaurante">
+    </div>
+</header>
+<div class="container">
+    <div class="sidebar">
+        <h2>Categorías</h2>
+        <ul id="categories-list">
+        </ul>
+    </div>
+    <div class="menu">
+        <h2>Menú</h2>
+        <div id="menu-header">
+            <h3 id="selected-category">Seleccione una categoría</h3>
+        </div>
+        <ul id="dishes-list">
+        </ul>
+    </div>
+    <div class="order">
+        <h2>Orden</h2>
+        <ul id="order-list">
+        </ul>
+        <p>Total: $<span id="total-price">0.00</span></p>
+        <button id="purchase-btn">Comprar</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-dish-name">Nombre del Platillo</h2>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p id="modal-dish-description">Descripción del Platillo</p>
+            <form id="order-form">
+                <label for="size">Tamaño:</label><br>
+                <input type="radio" id="regular" name="size" value="regular" checked>
+                <label for="regular">Regular</label><br>
+                <input type="radio" id="grande" name="size" value="grande">
+                <label for="grande">Grande (20% extra)</label><br><br>
+                <label for="quantity">Cantidad:</label>
+                <select id="quantity" name="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    </select>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button id="add-to-order-btn">Agregar a la Orden</button>
+            <button id="close-modal-btn">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<script src="controller.js"></script>
+</body>
+</html>
