@@ -1,105 +1,105 @@
-# Restaurant Web API
+# Java-restaurant-api
 
-**Autor:** JordanJazz24  
-**Repositorio:** `Restaurant-web-api`  
-**Lenguajes:** Java (Spring Boot), JavaScript, HTML, CSS
 
----
-
-## Resumen del Proyecto
-
-Restaurant Web API es una aplicación backend diseñada para la gestión de menús y platillos en un restaurante, ofreciendo una API REST escalable y mantenible que facilita la integración con interfaces web modernas y clientes móviles. El proyecto sigue principios sólidos de arquitectura en capas y buenas prácticas de ingeniería de software.
+**Author:** JordanJazz24  
+**Repository:** `Restaurant-web-api`  
+**Languages:** Java (Spring Boot), JavaScript, HTML, CSS
 
 ---
 
-## Arquitectura
+## Project Summary
 
-La arquitectura del proyecto está organizada en capas, siguiendo el patrón clásico de aplicaciones empresariales:
-
-- **Capa de Datos (`data/`):**  
-  Aquí viven los repositorios que gestionan el acceso y manipulación de las entidades centrales: `Platillo` y `Categoria`.  
-  Los datos se almacenan en listas en memoria para fines de demostración, permitiendo búsquedas, listados y filtrado por categoría.
-
-- **Capa de Lógica de Negocio (`logic/`):**  
-  Expone los servicios que interactúan con los repositorios, encapsulando las reglas operativas: lectura de categorías, platillos y filtrado por categoría.
-
-- **Capa de Presentación (`presentation/`):**  
-  Implementa los controladores REST que exponen los endpoints para interactuar con la API.  
-  Los endpoints principales permiten listar, buscar y filtrar platillos y categorías.
-
-- **Frontend Integrable (`resources/static/pages/restaurante/`):**  
-  Incluye archivos HTML y JS que muestran cómo consumir la API desde el navegador, permitiendo visualizar el menú, seleccionar categorías y simular órdenes.
-
-- **Bootstrap y configuración:**  
-  El punto de entrada está en `restauranteApplication.java`, usando Spring Boot para inicializar la aplicación.
+Java-restaurant-api I is a backend application designed for managing menus and dishes in a restaurant, offering a scalable and maintainable REST API that facilitates integration with other systems.
 
 ---
 
-## Lógica Implementada
+## Architecture
 
-### Entidades
-- **Categoria:**  
-  Representa una categoría de platillos (ejemplo: Entradas, Carnes, Sopas).  
-  Cada categoría tiene un identificador y nombre.
+The project architecture is organized in layers, following the classic enterprise application pattern:
 
-- **Platillo:**  
-  Representa un platillo del menú, asociado a una categoría.  
-  Incluye id, nombre, descripción y precio.
+- **Data Layer (`data/`):**  
+  Here are the repositories that manage access and manipulation of the central entities: `Platillo` (Dish) and `Categoria` (Category).  
+  Data is stored in in-memory lists for demonstration purposes, allowing searches, listings, and filtering by category.
 
-### Repositorios
+- **Business Logic Layer (`logic/`):**  
+  Exposes the services that interact with the repositories, encapsulating operational rules: reading categories, dishes, and filtering by category.
+
+- **Presentation Layer (`presentation/`):**  
+  Implements the REST controllers that expose the endpoints to interact with the API.  
+  The main endpoints allow listing, searching, and filtering dishes and categories.
+
+- **Integrable Frontend (`resources/static/pages/restaurante/`):**  
+  Includes HTML and JS files that show how to consume the API from the browser, allowing you to view the menu, select categories, and simulate orders.
+
+- **Bootstrap and Configuration:**  
+  The entry point is in `restauranteApplication.java`, using Spring Boot to initialize the application.
+
+---
+
+## Implemented Logic
+
+### Entities
+- **Category:**  
+  Represents a dish category (example: Starters, Meats, Soups).  
+  Each category has an identifier and name.
+
+- **Dish:**  
+  Represents a menu dish, associated with a category.  
+  Includes id, name, description, and price.
+
+### Repositories
 - **CategoriaRepository:**  
-  Gestiona la lista de categorías, permitiendo buscar por id y listar todas.
+  Manages the list of categories, allowing searching by id and listing all.
 
 - **PlatilloRepository:**  
-  Gestiona la lista de platillos, permitiendo buscar por id, listar todos, y filtrar por categoría.  
-  Los datos se precargan (mock) en el constructor del repositorio.
+  Manages the list of dishes, allowing searching by id, listing all, and filtering by category.  
+  Data is preloaded (mock) in the repository constructor.
 
-### Servicios
+### Services
 - **Service:**  
-  Orquesta el acceso a las entidades, exponiendo métodos para obtener categorías y platillos, y filtrarlos por categoría.
+  Orchestrates access to entities, exposing methods to obtain categories and dishes, and filter them by category.
 
-### Controladores REST
-## Endpoints principales
+### REST Controllers
+## Main Endpoints
 
-### Platillos
+### Dishes
 
-| Método | Endpoint                  | Descripción                                       |
+| Method | Endpoint                  | Description                                       |
 |--------|---------------------------|---------------------------------------------------|
-| GET    | `/api/platillos/listar`   | Lista platillos por categoría (`categoriaId`)     |
-| GET    | `/api/platillos/buscar`   | Busca un platillo por su `id`                     |
+| GET    | `/api/platillos/listar`   | Lists dishes by category (`categoriaId`)          |
+| GET    | `/api/platillos/buscar`   | Searches for a dish by its `id`                   |
 
-> Puedes agregar, actualizar y eliminar platillos fácilmente extendiendo el controlador.
+> You can easily add, update, and delete dishes by extending the controller.
 
-### Categorías
+### Categories
 
-| Método | Endpoint                  | Descripción                                   |
+| Method | Endpoint                  | Description                                   |
 |--------|---------------------------|-----------------------------------------------|
-| GET    | `/api/categorias/listar`  | Lista todas las categorías disponibles        |
-| GET    | `/api/categorias/buscar`  | Busca una categoría por su `id`               |
+| GET    | `/api/categorias/listar`  | Lists all available categories                |
+| GET    | `/api/categorias/buscar`  | Searches for a category by its `id`           |
 
 ---
 
-
-### Frontend (Ejemplo de Integración)
-En `controller.js` se muestra cómo consumir la API, renderizar categorías, platillos y simular órdenes.  
-El HTML en `view.html` permite seleccionar categorías, ver sus platillos y construir una orden de compra, integrando la API con una interfaz interactiva.
+### Frontend (Integration Example)
+In `controller.js`, you can see how to consume the API, render categories, dishes, and simulate orders.  
+The HTML in `view.html` allows you to select categories, view their dishes, and build a purchase order, integrating the API with an interactive interface.
 
 ---
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 src/
 ├── main/
 │   ├── java/
 │   │   └── org/example/restaurante/
-│   │       ├── data/           # Repositorios de datos (Platillo, Categoria)
-│   │       ├── logic/          # Lógica de negocio (Service, Platillo, Categoria)
-│   │       ├── presentation/   # Controladores REST
+│   │       ├── data/           # Data repositories (Dish, Category)
+│   │       ├── logic/          # Business logic (Service, Dish, Category)
+│   │       ├── presentation/   # REST Controllers
 │   │       ├── restauranteApplication.java  # Entry point
-│   │       └── ServletInitializer.java      # Configuración WAR
+│   │       └── ServletInitializer.java      # WAR configuration
 │   └── resources/
-│       └── static/             # Archivos frontend (HTML, JS, CSS)
+│       └── static/             # Frontend files (HTML, JS, CSS)
 │           └── pages/restaurante/
 │               ├── controller.js
 │               └── view.html
@@ -109,55 +109,55 @@ src/
 
 ---
 
-## Tecnologías
+## Technologies
 
-- **Backend:** Java, Spring Boot (inyección de dependencias, controladores REST, servicios)
-- **Frontend:** JavaScript, HTML, CSS (ejemplo de integración)
-- **Pruebas:** JUnit, Spring Boot Test (test de carga de contexto)
+- **Backend:** Java, Spring Boot (dependency injection, REST controllers, services)
+- **Frontend:** JavaScript, HTML, CSS (integration example)
+- **Testing:** JUnit, Spring Boot Test (context load test)
 
 ---
 
-## Instalación y Ejecución
+## Installation and Execution
 
-1. **Clona el repositorio:**
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/JordanJazz24/Restaurant-web-api.git
    cd Restaurant-web-api
    ```
-2. **Construye el proyecto:**
+2. **Build the project:**
    ```bash
    ./mvnw clean install
    ```
-3. **Ejecuta la aplicación:**
+3. **Run the application:**
    ```bash
    ./mvnw spring-boot:run
    ```
-   Accede a la API en `http://localhost:8080/` y a la interfaz web en `/pages/restaurante/view.html`.
+   Access the API at `http://localhost:8080/` and the web interface at `/pages/restaurante/view.html`.
 
 ---
 
-## Extensibilidad
+## Extensibility
 
-El diseño modular permite agregar nuevas entidades, endpoints y funcionalidades fácilmente. Se recomienda seguir el patrón de capas y buenas prácticas de Spring Boot para mantener la mantenibilidad y escalabilidad.
-
----
-
-## Buenas Prácticas y Patrones Usados
-
-- Separación de responsabilidades (datos, lógica, presentación)
-- Inyección de dependencias
-- Control de errores básico
-- Pruebas automáticas y facilidad para extenderlas
-- Código claro, nombrado y documentado
+The modular design allows you to easily add new entities, endpoints, and functionalities. It is recommended to follow the layered pattern and Spring Boot best practices to maintain maintainability.
 
 ---
 
-## Licencia
+## Best Practices and Patterns Used
+
+- Separation of responsibilities (data, logic, presentation)
+- Dependency injection
+- Basic error control
+- Automated tests and easy extension
+- Clear, well-named, and documented code
+
+---
+
+## License
 
 MIT
 
 ---
 
-## Contacto
+## Contact
 
-Para soporte o sugerencias: [JordanJazz24](https://github.com/JordanJazz24)
+For support or suggestions: [JordanJazz24](https://github.com/JordanJazz24)
